@@ -23,7 +23,6 @@ export function ProjectCard({ project, onSelect, onDelete }: ProjectCardProps) {
         <div className="flex-1" onClick={onSelect}>
           <div className="flex items-center gap-3 mb-2">
             <h3 className="text-xl font-bold text-gray-900">{project.name}</h3>
-            <span className="text-sm font-semibold text-gray-600 bg-gray-200 px-2 py-1 rounded">{project.key}</span>
           </div>
           <p className="text-gray-600 text-sm mb-3">{project.description}</p>
         </div>
