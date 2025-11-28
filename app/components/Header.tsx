@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export function Header() {
@@ -14,12 +15,9 @@ export function Header() {
         <div className="flex justify-between items-center">
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">PC</span>
-            </div>
+            <Image src="/logo.png" alt="Logo" width={100} height={100} />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">DeltaWave</h1>
-              <p className="text-xs text-gray-500">Gerenciador de projetos e tarefas</p>
+              <h1 className="text-xl font-bold text-gray-700">Gerenciador de projetos e tarefas</h1>
             </div>
           </div>
 
