@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import { StoreProvider } from "@/app/providers/StoreProvider";
 import { AuthProvider } from "@/app/providers/AuthProvider";
 import { ProtectedLayout } from "@/app/providers/ProtectedLayout";
 import "./globals.css";
@@ -30,11 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <ProtectedLayout>
-            {children}
-          </ProtectedLayout>
-        </AuthProvider>
+        <StoreProvider>
+          <AuthProvider>
+            <ProtectedLayout>
+              {children}
+            </ProtectedLayout>
+          </AuthProvider>
+        </StoreProvider>
         <Toaster 
           position="bottom-center"
           toastOptions={{
