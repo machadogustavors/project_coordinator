@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import toast from 'react-hot-toast';
 import { Project, Task } from '@/app/types';
 import { KanbanBoard } from './KanbanBoard';
 import { Modal } from './Modal';
@@ -51,8 +52,10 @@ export function KanbanPage({ initialProjects }: KanbanPageProps) {
         ),
       }));
       setProjects(updatedProjects);
+      toast.success('Status da tarefa atualizado!');
     } catch (error) {
       console.error('Error updating task:', error);
+      toast.error('Erro ao atualizar status da tarefa');
     } finally {
       setIsLoading(false);
     }
@@ -68,8 +71,10 @@ export function KanbanPage({ initialProjects }: KanbanPageProps) {
         tasks: (p.tasks || []).filter(t => t.id !== taskId),
       }));
       setProjects(updatedProjects);
+      toast.success('Tarefa excluída com sucesso!');
     } catch (error) {
       console.error('Error deleting task:', error);
+      toast.error('Erro ao excluir tarefa');
     } finally {
       setIsLoading(false);
     }
@@ -124,8 +129,10 @@ export function KanbanPage({ initialProjects }: KanbanPageProps) {
       });
       setProjects(updatedProjects);
       setShowTaskForm(false);
+      toast.success('Tarefa criada com sucesso!');
     } catch (error) {
       console.error('Error creating task:', error);
+      toast.error('Erro ao criar tarefa');
     } finally {
       setIsLoading(false);
     }

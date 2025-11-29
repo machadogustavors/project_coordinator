@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/app/providers/AuthProvider";
 import { ProtectedLayout } from "@/app/providers/ProtectedLayout";
 import "./globals.css";
@@ -34,6 +35,12 @@ export default function RootLayout({
             {children}
           </ProtectedLayout>
         </AuthProvider>
+        <Toaster 
+          position="bottom-center"
+          toastOptions={{
+            duration: 3000,
+          }}
+        />
       </body>
     </html>
   );

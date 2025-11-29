@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import toast from 'react-hot-toast';
 import { ProjectForm } from '@/app/components/ProjectForm';
 import { ProjectCard } from '@/app/components/ProjectCard';
 import { TaskForm } from '@/app/components/TaskForm';
@@ -55,8 +56,10 @@ export function ProjectsPage({ initialProjects }: ProjectsPageProps) {
       setSelectedProject(newProject);
       setShowProjectForm(false);
       router.push(`?projectId=${newProject.id}`);
+      toast.success('Projeto criado com sucesso!');
     } catch (error) {
       console.error('Error creating project:', error);
+      toast.error('Erro ao criar projeto');
     } finally {
       setIsLoading(false);
     }
@@ -71,8 +74,10 @@ export function ProjectsPage({ initialProjects }: ProjectsPageProps) {
         setSelectedProject(null);
         router.push('/');
       }
+      toast.success('Projeto excluído com sucesso!');
     } catch (error) {
       console.error('Error deleting project:', error);
+      toast.error('Erro ao excluir projeto');
     } finally {
       setIsLoading(false);
     }
@@ -101,8 +106,10 @@ export function ProjectsPage({ initialProjects }: ProjectsPageProps) {
       });
       setProjects(updatedProjects);
       setShowTaskForm(false);
+      toast.success('Tarefa criada com sucesso!');
     } catch (error) {
       console.error('Error creating task:', error);
+      toast.error('Erro ao criar tarefa');
     } finally {
       setIsLoading(false);
     }
@@ -130,8 +137,10 @@ export function ProjectsPage({ initialProjects }: ProjectsPageProps) {
         return p;
       });
       setProjects(updatedProjects);
+      toast.success('Status da tarefa atualizado!');
     } catch (error) {
       console.error('Error updating task:', error);
+      toast.error('Erro ao atualizar status da tarefa');
     }
   };
 
@@ -152,8 +161,10 @@ export function ProjectsPage({ initialProjects }: ProjectsPageProps) {
         return p;
       });
       setProjects(updatedProjects);
+      toast.success('Tarefa excluída com sucesso!');
     } catch (error) {
       console.error('Error deleting task:', error);
+      toast.error('Erro ao excluir tarefa');
     } finally {
       setIsLoading(false);
     }
